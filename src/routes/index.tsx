@@ -19,7 +19,7 @@ type Reel = { code: string; kind: string };
 
 function parse(url: string): Reel | null {
   const m = url.match(/instagram\.com\/(?:[^/]+\/)?(reel|reels|p|tv)\/([A-Za-z0-9_-]+)/);
-  if (!m) return null;
+  if (!m || !m[1] || !m[2]) return null;
   return { kind: m[1] === "reels" ? "reel" : m[1], code: m[2] };
 }
 
